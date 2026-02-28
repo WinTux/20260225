@@ -1,0 +1,13 @@
+[Unit]
+Description=Servicio de monitoreo de host: %i
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/monitor-instance.sh %i
+Restart=always
+RestartSec=5
+StandardOutput=append:/var/log/monitor-%i.log
+StandardError=append:/var/log/monitor-%i.log
+
+[Install]
+WantedBy=multi-user.target
