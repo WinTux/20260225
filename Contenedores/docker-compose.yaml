@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  miqueriodservidorcito:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver-dockercompose
+    ports:
+      - "1434:1433"
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "123456ABCxyz"
+    restart: unless-stopped
+    networks:
+      - red-local
+networks:
+  red-local:
+    name: red-local
+    driver: bridge
